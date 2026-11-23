@@ -1,0 +1,23 @@
+{
+  "metrics": {
+    "weeks": 2484,
+    "weeks_no_stockout": 2356,
+    "weeks_excluded_stockout": 121,
+    "weeks_excluded_entry_error": 7,
+    "wape_week_actual": 14.33,
+    "wape_week_truth": 6.26,
+    "mae_week": 22.89,
+    "bias_week": -0.35,
+    "coverage_80_week": 72.2,
+    "share_big_error": 20.1,
+    "service_level": 84.3
+  },
+  "outliers": {
+    "true_positive": 40,
+    "false_positive": 0,
+    "false_negative": 2,
+    "precision": 100.0,
+    "recall": 95.2,
+    "fp_top_sku": {}
+  }
+}

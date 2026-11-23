@@ -1,0 +1,11 @@
+{
+  "test_rows": 17748,
+  "eval_rows": 17529,
+  "wape_model": 33.4,
+  "wape_naive": 39.61,
+  "mae_model": 7.695,
+  "mae_naive": 9.124,
+  "bias_model": -0.51,
+  "coverage_80": 78.0,
+  "wape_vs_true_mean": 7.53
+}

@@ -1,0 +1,99 @@
+===== unit: функціональні тести сценаріїв
+--- stdout
+--- stderr
+test_t10_entry_error (test_prototype.PrototypeScenarios.test_t10_entry_error) ... ok
+test_t11_order_limit (test_prototype.PrototypeScenarios.test_t11_order_limit) ... ok
+test_t12_seasonal (test_prototype.PrototypeScenarios.test_t12_seasonal) ... ok
+test_t13_holiday_juice (test_prototype.PrototypeScenarios.test_t13_holiday_juice) ... ok
+test_t14_new_product (test_prototype.PrototypeScenarios.test_t14_new_product) ... ok
+test_t15_heat_water (test_prototype.PrototypeScenarios.test_t15_heat_water) ... ok
+test_t16_weather_shift (test_prototype.PrototypeScenarios.test_t16_weather_shift) ... ok
+test_t1_regular_week (test_prototype.PrototypeScenarios.test_t1_regular_week) ... ok
+test_t2_heat_wave (test_prototype.PrototypeScenarios.test_t2_heat_wave) ... ok
+test_t3_promo (test_prototype.PrototypeScenarios.test_t3_promo) ... ok
+test_t4_new_product (test_prototype.PrototypeScenarios.test_t4_new_product) ... ok
+test_t5_model_down (test_prototype.PrototypeScenarios.test_t5_model_down) ... ok
+test_t6_holiday_week (test_prototype.PrototypeScenarios.test_t6_holiday_week) ... ok
+test_t7_weather_unavailable (test_prototype.PrototypeScenarios.test_t7_weather_unavailable) ... ok
+test_t8_low_volume (test_prototype.PrototypeScenarios.test_t8_low_volume) ... ok
+test_t9_censored (test_prototype.PrototypeScenarios.test_t9_censored) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.049s
+
+OK
+--- код завершення: 0
+===== scenarios: таблиця тестових прикладів
+--- stdout
+RetailBigData · Demand Forecast Service · Stukalov
+ID  магазин / товар               дата         прогноз 7 дн  істинний  похибка  впевн.  маршрут
+T1  Київ-017 / MILK-1L            2026-10-24          605.6     584.2    +3.7%   0.831  auto_order
+    Звичайний тиждень, щоденний товар; прапорці: —; коректно: так
+T2  Одеса-009 / ICECREAM-80       2026-07-13          322.0     601.7   -46.5%   0.600  manager_review
+    Спека 14–24.07 (+7 °C), морозиво; прапорці: outlier_in_history, out_of_range; коректно: ні
+T3  Київ-022 / MILK-1L            2026-10-24          695.9         —        —   0.811  auto_order
+    Запланована акція −25 % на 7 днів; база без акції 453.2; прапорці: —; коректно: так
+T4  Київ-017 / KOMBUCHA-033       2026-10-24           50.5      41.9   +20.5%   0.400  reject_ai
+    Новий товар (продається 24 дні); прапорці: cold_start; коректно: так
+T5  Київ-017 / MILK-1L            2026-10-24          535.5     584.2    -8.3%   0.000  reject_ai
+    Компонент ШІ недоступний; прапорці: model_unavailable; коректно: так
+T6  Львів-003 / BREAD-RYE         2026-08-17          438.2     435.0    +0.7%   0.843  auto_order
+    Тиждень зі святом 24.08, хліб; прапорці: —; коректно: так
+T7  Харків-005 / WATER-1.5L       2026-08-02          389.1     338.8   +14.8%   0.780  auto_order
+    Сервіс погоди недоступний, вода; прапорці: weather_imputed; коректно: так
+T8  Вінниця-002 / SPARKLING-075   2026-09-12           24.4      19.9   +22.5%   0.755  auto_order
+    Товар з малими продажами (ігристе); прапорці: —; коректно: так
+T9  Київ-022 / TEA-100            2026-08-23           77.3      84.3    -8.3%   0.700  manager_review
+    Нестача товару 5 днів за 28 днів; прапорці: censored_demand; коректно: так
+T10 Київ-017 / PASTA-500          2026-09-10          338.1     301.8   +12.0%   0.727  manager_review
+    Помилка касира 06.09 (×100) в історії; прапорці: outlier_in_history; коректно: так
+T11 Київ-017 / MILK-1L            2026-10-24          605.6     584.2    +3.7%   0.831  manager_review
+    Замовлення понад ліміт (середнє 150); прапорці: —; коректно: так
+T12 Харків-005 / TANGERINES-1KG   2026-10-10           90.5      81.7   +10.8%   0.797  auto_order
+    Сезонний товар (мандарини, жовтень); прапорці: —; коректно: так
+T13 Київ-017 / JUICE-1L           2026-09-27          285.2     296.0    -3.6%   0.794  auto_order
+    Тиждень зі святом 01.10, сік; прапорці: weather_imputed; коректно: так
+T14 Одеса-009 / PROTEIN-BAR       2026-10-24           74.8      67.7   +10.6%   0.400  reject_ai
+    Новий товар (продається 24 дні), батончик; прапорці: cold_start; коректно: так
+T15 Київ-017 / WATER-1.5L         2026-07-13          612.0     731.0   -16.3%   0.808  auto_order
+    Спека 14–24.07, вода; прапорці: —; коректно: так
+T16 Харків-005 / ICECREAM-80      2026-09-22          106.8      45.3  +135.7%   0.700  manager_review
+    Різке похолодання (з ≈16 до 1–7 °C), морозиво; прапорці: weather_shift; коректно: так
+Коректних сценаріїв: 15 з 16 (94 %)
+--- stderr
+--- код завершення: 0
+===== holdout: показники якості на відкладених даних
+--- stdout
+RetailBigData · Demand Forecast Service · Stukalov
+Перевірка на відкладених даних (після 2026-06-30 до 2026-10-31), денний рівень
+  рядків у тесті: 17748, з них без відсутності товару: 17529
+  WAPE модель:            33.40 %
+  WAPE базове правило:    39.61 %   (середнє того ж дня тижня за 4 тижні)
+  MAE модель / правило:   7.695 / 9.124 шт.
+  зміщення (bias) моделі: -0.51 %
+  покриття 80 % інтервалу: 78.0 %
+  WAPE відносно істинного середнього попиту: 7.53 %
+--- stderr
+--- код завершення: 0
+===== json: контракт JSON для Decision Engine
+--- stdout
+RetailBigData · Demand Forecast Service · Stukalov
+Прогноз попиту: Молоко 2,5 %, 1 л (MILK-1L), магазин Київ-017, від 2026-10-24 на 7 днів
+  джерело: ml_model
+  по днях: 85.3, 84.3, 79.2, 76.7, 76.0, 91.1, 112.9
+  сума за 7 днів: 605.6  (80 % інтервал 494.1 – 699.0)
+  впевненість: 0.831
+  прапорці: немає
+Рішення (Decision Engine): залишок 110, в дорозі 4
+  маршрут: auto_order — автоматичне замовлення
+  причина: впевненість 0.83 ≥ 0.75
+  цільовий запас: 652.3; замовити: 540 шт.
+{"forecast": {"store": "Київ-017", "sku": "MILK-1L", "origin": "2026-10-24", "daily": [85.34, 84.31, 79.17, 76.74, 76.04, 91.1, 112.94], "point_7d": 605.6, "low_7d": 494.1, "high_7d": 699.0, "confidence": 0.831, "source": "ml_model", "flags": []}, "decision": {"route": "auto_order", "order_qty": 540, "target_stock": 652.3, "reason": "впевненість 0.83 ≥ 0.75"}}
+--- stderr
+--- код завершення: 0
+===== bad-sku: невідомий товар
+--- stdout
+RetailBigData · Demand Forecast Service · Stukalov
+--- stderr
+Помилка: невідомий товар: NO-SUCH
+--- код завершення: 2
