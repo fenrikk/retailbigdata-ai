@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+prototype/data/
+prototype/models/
+prototype/results/
+prototype/tests_log.txt
+.DS_Store
